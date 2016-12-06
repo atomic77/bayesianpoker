@@ -36,8 +36,8 @@ public class Hand extends CardCollection {
 		if(isStraightFlush()) return STRAIGHTFLUSH;
 		if(isQuad()) return QUAD;
 		if(isFullHouse()) return FULLHOUSE;
-		if(hasFlush(5)) return FLUSH;
-		if(hasStraight(5)) return STRAIGHT;
+		if(isFlush()) return FLUSH;
+		if(isStraight()) return STRAIGHT;
 		if(isTriple()) return TRIPLE;
 		if(isTwoPair()) return TWOPAIR;
 		if(isPair()) return PAIR;

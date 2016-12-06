@@ -5,11 +5,10 @@
   <version>0.0.2-SNAPSHOT</version>
   <name>Bayesian Poker Player</name>
   <build>
-    <!--<sourceDirectory>src</sourceDirectory>-->
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <!--<version>2.3.2</version>-->
+        <!--<version>RELEASE</version>-->
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -41,27 +40,18 @@
   	<dependency>
   		<groupId>org.apache.commons</groupId>
   		<artifactId>commons-math3</artifactId>
-  		<version>3.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>inflib</groupId>
-  		<artifactId>inflib</artifactId>
-  		<version>3.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.hbase</groupId>
-  		<artifactId>hbase</artifactId>
-  		<version>0.94.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.datanucleus</groupId>
-  		<artifactId>datanucleus-hbase</artifactId>
-  		<version>3.1.1</version>
+  		<version>RELEASE</version>
   	</dependency>
       <dependency>
-          <groupId>org.junit.jupiter</groupId>
-          <artifactId>junit-jupiter-api</artifactId>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
           <version>RELEASE</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>18.0</version>
       </dependency>
   </dependencies>
 </project>

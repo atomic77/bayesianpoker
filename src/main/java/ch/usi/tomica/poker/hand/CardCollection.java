@@ -57,7 +57,7 @@ public class CardCollection {
 		int[] rankCounts = new int[13];
 		for (int i =0; i<13; i++) rankCounts[i] = 0;
 		for (int r : getRanks()) {
-			rankCounts[r-1]++;
+			rankCounts[r]++;
 		}
 		return rankCounts;
 	}
@@ -68,7 +68,7 @@ public class CardCollection {
 		List<Integer> s = getSuits();
 //		for (int r : getSuits()) {
 		for (int r : s) {
-			suitCounts[r-1]++;
+			suitCounts[r]++;
 		}
 		return suitCounts;
 	}
@@ -114,7 +114,7 @@ public class CardCollection {
 		Hand h = new Hand();
 		for (int i = 0; i < n; i++) {
 			Card c = new Card();
-			c.setValue(cardVals[i]+1);
+			c.setValue(cardVals[i]);
 			h.addCard(c);
 		}
 		

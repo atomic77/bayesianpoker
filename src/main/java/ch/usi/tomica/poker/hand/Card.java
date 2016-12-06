@@ -1,35 +1,68 @@
 package ch.usi.tomica.poker.hand;
 
-import java.util.HashSet;
-import java.util.Set;
 
+import com.google.common.collect.ImmutableBiMap;
 
 public class Card implements Comparable<Card>{
-	
+
+	private static final ImmutableBiMap<Integer, String> suitMap =
+			ImmutableBiMap.<Integer, String>builder()
+					.put(0, "c")
+					.put(1, "d")
+					.put(2, "h")
+					.put(3, "s")
+					.build();
+
+    private static final ImmutableBiMap<Integer, String> rankMap =
+			ImmutableBiMap.<Integer, String>builder()
+					.put(0, "2")
+					.put(1, "3")
+					.put(2, "4")
+					.put(3, "5")
+					.put(4, "6")
+					.put(5, "7")
+					.put(6, "8")
+					.put(7, "9")
+					.put(8, "T")
+					.put(9, "J")
+					.put(10, "Q")
+					.put(11, "K")
+					.put(12, "A")
+					.build();
+
 	//	Numbered cards from 1-52
 	private int value;  
-	
-	public Card() {
-	}
-	
+
+	public Card() {}
 	public Card(int value) {
 		if (value < 1 || value > 52) 
 			throw new IllegalArgumentException("Invalid card value!");
 		this.value = value;
 	}
-	
-	// Value from 1 - 4 corresponding to Clubs - Spades (alphabetic order)
-	public int getSuit() {
-		return (int)(Math.ceil((double)value / 13));
+
+	public Card(String s) {
+		String[] parts = s.split("_");
+		int rank = rankMap.inverse().get(parts[0]);
+		int suit = suitMap.inverse().get(parts[1]);
+		this.value = valueFromRankAndSuit(rank, suit);
 	}
 
-	// Ranks are from 1-13, to make it clearer that value 2 = a 'deuce'
+	private int valueFromRankAndSuit(int rank, int suit) {
+		return rank + (suit * 13);
+	}
+
+	// Value from 0 - 3 corresponding to Clubs - Spades (alphabetic order)
+	public int getSuit() {
+		return (int)(Math.floor((double)value / 13));
+	}
+
+	// Ranks are from 0-12
 	public int getRank() {
-		return (value % 13) + 1;
+		return (value % 13);
 	}
 	
 	public boolean isAce() {
-		return (this.getRank() == 1);
+		return (this.getRank() == 12);
 	}
 
 	public boolean isSameSuit(Card c) {
@@ -50,41 +83,7 @@ public class Card implements Comparable<Card>{
 		String s = null;
 		int rank = getRank();
 		int suit = getSuit();
-		if (rank >= 2 && rank <= 10) {
-			s = "" + rank;
-		} else {
-			switch (rank) {
-			case 11:
-				s = "J";
-				break;
-			case 12:
-				s = "Q";
-				break;
-			case 13:
-				s = "K";
-				break;
-			case 1:
-				s = "A";
-				break;
-			}
-		}
-		
-		switch (suit) {
-		case 1:
-			s += "_Cl";
-			break;
-		case 2:
-			s += "_Di";
-			break;
-		case 3:
-			s += "_Hr";
-			break;
-		case 4:
-			s += "_Sp";
-			break;
-		}
-		
-		return s;
+		return rankMap.get(rank) + "_" + suitMap.get(suit);
 	}
 	
 	// Getters and setters
