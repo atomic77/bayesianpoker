@@ -1,4 +1,4 @@
-package ch.usi.tomica.poker.hand;
+package com.github.atomic77.poker.hand;
 
 import org.junit.After;
 import org.junit.Before;

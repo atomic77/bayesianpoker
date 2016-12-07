@@ -1,4 +1,4 @@
-package ch.usi.tomica.poker.hand;
+package com.github.atomic77.poker.hand;
 
 /**
  * Class representing the collection of community cards on the table

@@ -1,4 +1,4 @@
-package ch.usi.tomica.poker.hand;
+package com.github.atomic77.poker.hand;
 
 import java.util.ArrayList;
 import java.util.Collections;

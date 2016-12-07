@@ -1,4 +1,4 @@
-package ch.usi.tomica.poker.hand;
+package com.github.atomic77.poker.hand;
 
 import org.apache.commons.math3.random.RandomData;
 import org.apache.commons.math3.random.RandomDataImpl;

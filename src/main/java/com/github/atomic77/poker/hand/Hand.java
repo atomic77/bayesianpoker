@@ -1,8 +1,6 @@
-package ch.usi.tomica.poker.hand;
+package com.github.atomic77.poker.hand;
 
-import java.util.TreeSet;
-
-public class Hand extends CardCollection {
+public class Hand extends CardCollection implements Comparable<Hand>{
 	public final static int NOTHING = 0;
 	public final static int PAIR = 1;
 	public final static int TWOPAIR = 2;
@@ -110,5 +108,11 @@ public class Hand extends CardCollection {
 		return s;
 	}
 
-
+	@Override
+	public int compareTo(Hand o) {
+	    int handDiff = this.evaluateHand() - o.evaluateHand();
+	    if (handDiff != 0) return handDiff;
+	    // Same hand, determine which is stronger
+		return 0;
+	}
 }
