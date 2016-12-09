@@ -6,8 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
-import org.apache.commons.math3.random.RandomData;
+import org.apache.commons.math3.random.RandomDataGenerator;
 
 public class CardCollection {
 
@@ -107,7 +106,7 @@ public class CardCollection {
 		return seqLen >= n;
 	}
 	
-	public static Hand generateRandomHand(int n, RandomData r) {
+	public static Hand generateRandomHand(int n, RandomDataGenerator r) {
 		// samples from 0-51
 		int [] cardVals = r.nextPermutation(52,n); 
 		

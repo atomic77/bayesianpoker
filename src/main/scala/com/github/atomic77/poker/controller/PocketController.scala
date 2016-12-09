@@ -1,4 +1,4 @@
-package com.github.atomic77.poker
+package com.github.atomic77.poker.controller
 
 import com.github.atomic77.poker.hand.{Card, Pocket}
 import org.springframework.web.bind.annotation.{RequestMapping, RestController}

@@ -4,8 +4,7 @@ package com.github.atomic77.poker.controller;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.github.atomic77.poker.hand.Hand;
-import org.apache.commons.math3.random.RandomDataImpl;
-import org.apache.commons.math3.random.RandomData;
+import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HandController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    static RandomData randomData = new RandomDataImpl();
+    static RandomDataGenerator randomData = new RandomDataGenerator();
 
     @RequestMapping("/hand")
     public Hand hand(@RequestParam(value="n", defaultValue="5") String n) {

@@ -30,12 +30,12 @@ public class Card implements Comparable<Card>{
 					.put(12, "A")
 					.build();
 
-	//	Numbered cards from 1-52
+	//	Numbered cards from 0-51
 	private int value;  
 
 	public Card() {}
 	public Card(int value) {
-		if (value < 1 || value > 52) 
+		if (value < 0 || value > 51)
 			throw new IllegalArgumentException("Invalid card value!");
 		this.value = value;
 	}

@@ -1,7 +1,8 @@
 package com.github.atomic77.poker.hand;
 
-import org.apache.commons.math3.random.RandomData;
-import org.apache.commons.math3.random.RandomDataImpl;
+import org.apache.commons.math3.random.JDKRandomGenerator;
+import org.apache.commons.math3.random.RandomDataGenerator;
+import org.apache.commons.math3.random.RandomGenerator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class GameTest {
 
-    static RandomData randomData = new RandomDataImpl();
+    static RandomDataGenerator randomData = new RandomDataGenerator();
 
     @Before
     public void setUp() throws Exception {
@@ -30,7 +31,7 @@ public class GameTest {
         Deck d = new Deck();
         Pocket opp = d.dealPocket(2);
         Pocket me = d.dealPocket(2);
-        CommunityCards board = d.dealCommunityCards(3);
+        CommunityCards board = new CommunityCards(d.dealCards(3));
         System.out.println("Opponent cards: " + opp);
         System.out.println("My cards: " +  me);
         System.out.println("Flop Board cards: " +  board);

@@ -1,32 +1,24 @@
 package com.github.atomic77.poker.hand;
 
-import org.apache.commons.math3.random.RandomData;
-import org.apache.commons.math3.random.RandomDataImpl;
+import org.apache.commons.math3.random.*;
 
 public class Deck extends CardCollection {
 
-	private RandomData rnd;
+	private RandomDataGenerator rnd;
 	 
 	/**
-	 * Initializes {@code decks} new decks of cards 
+	 * Initializes a new deck of cards
 	 */
-	public Deck(int decks) {
+	public Deck() {
 		initializeCardCollecton();
-		// Initialize the deck
-		rnd = new RandomDataImpl(); 
-		for(int i = 1; i <= 52; i++) {
+		rnd = new RandomDataGenerator();
+		for(int i = 0; i < 52; i++) {
 			Card c = new Card();
 			c.setValue(i);
 			cards.add(c);
 		}
 	}
-	/**
-	 * Initialize one deck of cards 
-	 */
-	public Deck() {
-		this(1);
-	}
-	
+
 	/**
 	 * Deal {@code n} cards ; can be cast to any card-collection type
 	 * @param n
@@ -37,15 +29,15 @@ public class Deck extends CardCollection {
 		return new Pocket(vals);
 	}
 	
-	public CommunityCards dealCommunityCards(int n) {
+	public CardCollection dealCards(int n) {
 		int vals[] = sampleFromDeck(n);
 		return new CommunityCards(vals);
 	}
 	
-	public Hand dealHand(int n) {
-		int vals[] = sampleFromDeck(n);
-		return new Hand(vals);
-	}
+//	public Hand dealHand(int n) {
+//		int vals[] = sampleFromDeck(n);
+//		return new Hand(vals);
+//	}
 	
 	public Card dealCard() {
 		int vals[] = sampleFromDeck(1);
@@ -67,20 +59,4 @@ public class Deck extends CardCollection {
 		}
 		return vals;
 	}
-	
-	public Card[] dealCardArray(int n) {
-		if (n > cards.size()) 
-			throw new IllegalArgumentException("Not enough cards!");
-		
-		// TODO Figure out if there is a way to avoid this object copying
-		Object sample[] = rnd.nextSample(cards, n);
-		Card c[] = new Card[n];
-		for (int i=0; i<n; i++) {
-			cards.remove(sample[i]);
-			c[i] = (Card)sample[i];
-		}
-		return c;
-	}
-	
-
 }

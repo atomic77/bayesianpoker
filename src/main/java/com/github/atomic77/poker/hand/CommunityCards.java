@@ -31,7 +31,12 @@ public class CommunityCards extends CardCollection {
 		// TODO Implement logic to determine what is the state of the board
 		return 0;
 	}
-	
+
+	public CommunityCards(CardCollection cc) {
+		initializeCardCollecton();
+		this.addCards(cc);
+	}
+
 	public CommunityCards(int vals[]) {
 		initializeCardCollecton(vals);
 	}
